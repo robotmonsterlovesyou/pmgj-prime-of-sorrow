@@ -9,11 +9,24 @@
     },
     "platforms": [
         {
+            "label": "ceiling",
+            "options": {
+                "x": 0,
+                "y": 0,
+                "width": 8000,
+                "height": 70,
+                "fillStyle": "#ABC0C1",
+                "pattern": "images/box.png"
+            },
+            "box2d_properties": {
+            }
+        },
+        {
             "label": "ground",
             "options": {
                 "x": 0,
-                "y": 730,
-                "width": 1600,
+                "y": 1530,
+                "width": 8000,
                 "height": 70,
                 "fillStyle": "#ABC0C1",
                 "pattern": "images/box.png"
@@ -27,7 +40,7 @@
                 "x": 0,
                 "y": 0,
                 "width": 70,
-                "height": 800,
+                "height": 1600,
                 "fillStyle": "#ABC0C1",
                 "pattern": "images/box.png"
             },
@@ -37,10 +50,10 @@
         {
             "label": "wall-right",
             "options": {
-                "x": 1530,
+                "x": 7930,
                 "y": 0,
                 "width": 70,
-                "height": 800,
+                "height": 1600,
                 "fillStyle": "#ABC0C1",
                 "pattern": "images/box.png"
             },
@@ -48,14 +61,79 @@
             }
         },
         {
-            "label": "platform",
+            "label": "",
             "options": {
-                "x": 300,
-                "y": 200,
-                "width": 280,
-                "height": 40,
+                "x": 70,
+                "y": 70,
+                "width": 1750,
+                "height": 700,
                 "fillStyle": "#ABC0C1",
-                "pattern": "images/platform.png"
+                "pattern": "images/box.png"
+            },
+            "box2d_properties": {
+            }
+        },
+        {
+            "label": "",
+            "options": {
+                "x": 70,
+                "y": 990,
+                "width": 1470,
+                "height": 70,
+                "fillStyle": "#ABC0C1",
+                "pattern": "images/box.png"
+            },
+            "box2d_properties": {
+            }
+        },
+        {
+            "label": "",
+            "options": {
+                "x": 350,
+                "y": 1260,
+                "width": 1470,
+                "height": 70,
+                "fillStyle": "#ABC0C1",
+                "pattern": "images/box.png"
+            },
+            "box2d_properties": {
+            }
+        },
+        {
+            "label": "",
+            "options": {
+                "x": 1820,
+                "y": 70,
+                "width": 560,
+                "height": 1260,
+                "fillStyle": "#ABC0C1",
+                "pattern": "images/box.png"
+            },
+            "box2d_properties": {
+            }
+        },
+        {
+            "label": "",
+            "options": {
+                "x": 1820,
+                "y": 70,
+                "width": 560,
+                "height": 1260,
+                "fillStyle": "#ABC0C1",
+                "pattern": "images/box.png"
+            },
+            "box2d_properties": {
+            }
+        },
+        {
+            "label": "",
+            "options": {
+                "x": 2520,
+                "y": 70,
+                "width": 350,
+                "height": 1050,
+                "fillStyle": "#ABC0C1",
+                "pattern": "images/box.png"
             },
             "box2d_properties": {
             }
