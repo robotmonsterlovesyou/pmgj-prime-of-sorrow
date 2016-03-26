@@ -10,8 +10,8 @@ define(function (require) {
     var controller = require('./controller')(state);
 
     var box = new Facade.Rect({
-        x: game.facade.width() / 2,
-        y: game.facade.height() / 2,
+        x: game.width() / 2,
+        y: game.height() / 2,
         width: 25,
         height: 25,
         anchor: 'center'

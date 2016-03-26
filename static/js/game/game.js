@@ -10,7 +10,7 @@ define(function (require) {
 
     game.setDebug(true);
 
-    stage.resizeForHDPI();
+    game.setHDPIMode(true);
 
     return game;
 

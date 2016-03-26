@@ -11,16 +11,16 @@ define(function (require) {
     var controller = require('./controller')(state);
 
     var title = new Facade.Text('Prime of Sorrow', {
-        y: (game.facade.height() / 2) - 40,
-        width: game.facade.width(),
+        y: (game.height() / 2) - 40,
+        width: game.width(),
         fontSize: 40,
         fontStyle: 'bold',
         textAlignment: 'center'
     });
 
     var isntructions = new Facade.Text('Press any key to continue.', {
-        y: (game.facade.height() / 2) + 20,
-        width: game.facade.width(),
+        y: (game.height() / 2) + 20,
+        width: game.width(),
         fontSize: 20,
         textAlignment: 'center'
     });
