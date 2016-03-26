@@ -187,11 +187,26 @@ define(function (require) {
 
         drawViewport: function (world, facade, camera) {
 
+            // all entities
             world.eachEntity(function (e) {
 
                 var sprite = e.getProp('physical').obj;
                 facade.addToStage(sprite, { x: '+=' + -camera.position.x, y: '+=' + -camera.position.y });
             }, { filterComponents: ['physical', 'visible'] });
+
+            // UI - background
+            world.eachEntity(function (e) {
+
+                var sprite = e.getProp('ui').obj;
+                facade.addToStage(sprite);
+            }, { filterComponents: ['ui', 'background'] });
+
+            // UI - foreground
+            world.eachEntity(function (e) {
+
+                var sprite = e.getProp('ui').obj;
+                facade.addToStage(sprite);
+            }, { filterComponents: ['ui', 'foreground'] });
         },
     };
 });

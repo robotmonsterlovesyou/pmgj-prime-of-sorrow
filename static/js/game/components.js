@@ -10,7 +10,9 @@ define(function (require) {
                 obj: null // facade object
             },
 
-            visible: {},
+            visible: {
+                hue: 0
+            },
 
             power: {
                 strength: 100
@@ -24,6 +26,15 @@ define(function (require) {
                 target: null,
                 lifetime: null
             },
+
+            ui: {
+                obj: null, // facade object
+                hue: null
+            },
+
+            background: {},
+
+            foreground: {}
         },
 
         templates: {
@@ -31,7 +42,7 @@ define(function (require) {
             player: {
                 physical: {},
                 visible: {},
-                powers: {}
+                power: {}
             },
 
             platform: {
