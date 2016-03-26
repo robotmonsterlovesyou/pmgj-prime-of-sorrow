@@ -22,6 +22,8 @@ define(function (require) {
 
         state.init(function () {
 
+            controller.resume();
+
             game.data.physWorld = new Facade.Entity().Box2D('createWorld', { canvas: game.canvas, gravity: [ 0, 20 ] });
             game.data.entWorld = SetupWorld.new();
             game.data.triggers = new Triggers(game.data.entWorld);
