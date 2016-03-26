@@ -106,7 +106,11 @@ define(function (require) {
 
                 e = controller.queue.shift();
 
-                if (e.type === 'hold' && e.button === 'd_pad_left') {
+                if (e.type === 'press' && e.button === 'button_1') {
+
+                    elem.Box2D('setVelocity', null, -15);
+
+                } else if (e.type === 'hold' && e.button === 'd_pad_left') {
 
                     elem.Box2D('setVelocity', -10, null);
 
