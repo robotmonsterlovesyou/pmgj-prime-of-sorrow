@@ -3,75 +3,53 @@ define(function (require) {
     var Facade = require('facade'),
         Plastick = require('plastick');
 
+    require('facadejs-Box2D-plugin');
+
     var game = require('./game');
 
     var state = new Plastick.State('level');
 
     var controller = require('../utils/controller')(state);
 
-    var box = new Facade.Rect({
-        x: game.width() / 2,
-        y: game.height() / 2,
-        width: 25,
-        height: 25,
-        anchor: 'center'
-    });
+    var camera = require('../utils/camera');
 
-    var speed = 5;
+    var generateEntityFromObject = require('../utils/box2d').generateEntityFromObject;
 
-    state.update(function () {
+    var world = new Facade.Entity().Box2D('createWorld', { canvas: game.canvas, gravity: [ 0, 20 ] });
 
-        var e;
+    var entities = {
+        platforms: []
+    };
 
-        if (controller.queue.length) {
+    state.init(function () {
 
-            while (controller.queue.length) {
+        fetch('../../data/level1.json').then(function (response) {
+            return response.json();
+        }).then(function (data) {
 
-                e = controller.queue.shift();
+            Object.keys(data).forEach(function (type) {
 
-                if (e.type === 'hold' && e.button === 'd_pad_left') {
+                var items = data[type];
 
-                    box.setOptions({ x: '-=' + speed });
+                if (items.length) {
 
-                } else if (e.type === 'hold' && e.button === 'd_pad_right') {
+                    entities[type] = items.map(function (item) {
 
-                    box.setOptions({ x: '+=' + speed });
+                        return generateEntityFromObject(item, world);
 
-                } else if (e.type === 'hold' && e.button === 'd_pad_up') {
-
-                    box.setOptions({ y: '-=' + speed });
-
-                } else if (e.type === 'hold' && e.button === 'd_pad_down') {
-
-                    box.setOptions({ y: '+=' + speed });
-
-                } else if (e.type === 'hold' && e.button === 'stick_axis_left') {
-
-                    if (e.value[0] < -0.1) {
-
-                        box.setOptions({ x: '-=' + speed });
-
-                    } else if (e.value[0] > 0.1) {
-
-                        box.setOptions({ x: '+=' + speed });
-
-                    }
-
-                    if (e.value[1] < -0.1) {
-
-                        box.setOptions({ y: '-=' + speed });
-
-                    } else if (e.value[1] > 0.1) {
-
-                        box.setOptions({ y: '+=' + speed });
-
-                    }
+                    });
 
                 }
 
-            }
+            });
 
-        }
+        });
+
+    });
+
+    state.update(function () {
+
+
 
     });
 
@@ -79,7 +57,11 @@ define(function (require) {
 
         game.facade.clear();
 
-        game.facade.addToStage(box);
+        game.facade.addToStage([
+            entities.platforms
+        ]);
+
+        world.Box2D('drawDebug');
 
     });
 
