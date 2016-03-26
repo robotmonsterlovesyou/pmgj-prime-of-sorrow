@@ -2,7 +2,7 @@ define(function (require) {
 
     'use strict';
 
-    var Fiberent = require('fiberent');
+    var Fiberent = require('../libs/fiberent');
 
     return function (fiberent) {
 

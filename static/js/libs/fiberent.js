@@ -5,7 +5,7 @@
     // performance.now() shim --------------------------------------------------
 
     // server-friendly implementation
-    var performance = {};
+    //var performance = {};
 
     (function() {
 

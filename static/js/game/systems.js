@@ -4,7 +4,7 @@ define(function (require) {
 
     //var Utils = require('../utils');
     //var Routines = require('./routines');
-    var Fiberent = require('../utils/fiberent');
+    var Fiberent = require('../libs/fiberent');
 
     // helper functions -----------------------------------------
 
@@ -100,7 +100,10 @@ define(function (require) {
         playerInput: function (world, triggers, controller) {
         },
 
-        updatePositions: function (world, triggers) {
+        updatePhysics: function (world, triggers, camera, data) {
+
+            camera.centerOnEntity(data.player1.getProp('physical').obj);
+            data.physWorld.Box2D('step');
         },
 
         fireWeapons: function (world, triggers, tick) {
@@ -118,9 +121,15 @@ define(function (require) {
                     dir: entity.hasComponent('controllable') ? 0 : pos.dir
                 });
             });*/
-        }
+        },
 
-        drawViewport: function (world, game, sprites, triggers) {
+        drawViewport: function (world, facade, camera) {
+
+            world.eachEntity(function (e) {
+
+                var sprite = e.getProp('physical').obj;
+                facade.addToStage(sprite, { x: '+=' + -camera.position.x, y: '+=' + -camera.position.y });
+            }, { filterComponents: ['physical', 'visible'] });
         },
     };
 });

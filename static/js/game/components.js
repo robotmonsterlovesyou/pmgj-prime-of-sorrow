@@ -6,11 +6,8 @@ define(function (require) {
 
         components: {
 
-            position: {
-                x: 0,
-                y: 0,
-                velocity: 0,
-                dir: 0
+            physical: {
+                obj: null // box2d object
             },
 
             visible: {
@@ -36,22 +33,19 @@ define(function (require) {
         templates: {
 
             player: {
-                position: {
-                    x: 100,
-                    y: 100,
-                },
+                physical: {},
+                visible: {},
                 powers: {}
             },
 
-            visible: {
-
+            platform: {
+                physical: {},
+                visible: {}
             },
-
             enemy: {
-                position: {
-                    velocity: 1.5
-                },
-            },
+                physical: {},
+                visible: {}
+            }
         }
     };
 });

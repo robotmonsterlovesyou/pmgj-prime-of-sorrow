@@ -5,7 +5,7 @@ define(function (require) {
     //var Utils = require('../utils');
     var Fiberent = require('../libs/fiberent');
     var componentSetup = require('./components');
-    var systemSetup = {};//require('./systems');
+    var systemSetup = require('./systems');
 
     // World setup ----------------------------------------------
 
