@@ -97,7 +97,27 @@ define(function (require) {
     return {
 
         // pass Controller object
-        playerInput: function (world, triggers, controller) {
+        playerInput: function (world, controller, player) {
+
+            var e,
+                elem = player.getProp('physical').obj;
+
+            while (controller.queue.length) {
+
+                e = controller.queue.shift();
+
+                if (e.type === 'hold' && e.button === 'd_pad_left') {
+
+                    elem.Box2D('setVelocity', -10, null);
+
+                } else if (e.type === 'hold' && e.button === 'd_pad_right') {
+
+                    elem.Box2D('setVelocity', 10, null);
+
+                }
+
+            }
+
         },
 
         updatePhysics: function (world, triggers, camera, data) {

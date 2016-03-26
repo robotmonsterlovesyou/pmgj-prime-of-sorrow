@@ -91,7 +91,7 @@ define(function (require) {
                 triggers = game.data.triggers;
             //triggers.init();
 
-            entWorld.updateSystem('playerInput', triggers, controller);
+            entWorld.updateSystem('playerInput', controller, game.data.player1);
             entWorld.updateSystem('fireWeapons', triggers, game.currentTick);
             entWorld.updateSystem('updatePhysics', triggers, camera, game.data);
 
