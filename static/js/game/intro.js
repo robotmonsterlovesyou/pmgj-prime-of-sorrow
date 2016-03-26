@@ -10,8 +10,16 @@ define(function (require) {
 
     var controller = require('./controller')(state);
 
-    var title = new Facade.Text('Hello World!', {
-        y: (game.facade.height() / 2) - 20,
+    var title = new Facade.Text('Prime of Sorrow', {
+        y: (game.facade.height() / 2) - 40,
+        width: game.facade.width(),
+        fontSize: 40,
+        fontStyle: 'bold',
+        textAlignment: 'center'
+    });
+
+    var isntructions = new Facade.Text('Press any key to continue.', {
+        y: (game.facade.height() / 2) + 20,
         width: game.facade.width(),
         fontSize: 20,
         textAlignment: 'center'
@@ -44,6 +52,7 @@ define(function (require) {
         game.facade.clear();
 
         game.facade.addToStage(title);
+        game.facade.addToStage(isntructions);
 
     });
 
