@@ -3,9 +3,9 @@
         "width": 800,
         "height": 400,
         "minX": 0,
-        "maxX": 1600,
+        "maxX": 8000,
         "minY": 0,
-        "maxY": 800
+        "maxY": 1600
     },
     "platforms": [
         {

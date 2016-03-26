@@ -33,7 +33,7 @@ define(function (require) {
             var player = game.data.player1.getProp('physical');
             player.obj = generateEntityFromObject({
                     options: {
-                        x: 100,
+                        x: 2400,
                         y: 100,
                         width: 100,
                         height: 100,
