@@ -18,7 +18,7 @@ define(function (require) {
         textAlignment: 'center'
     });
 
-    var isntructions = new Facade.Text('Press any key to continue.', {
+    var isntructions = new Facade.Text('Press any space to continue.', {
         y: (game.facade.height() / 2) + 20,
         width: game.facade.width(),
         fontSize: 20,
