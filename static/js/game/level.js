@@ -1,7 +1,9 @@
 define(function (require) {
 
     var Facade = require('facade'),
-        Plastick = require('plastick');
+        Plastick = require('plastick'),
+        Fiberent = require('../libs/fiberent'),
+        SetupWorld = require('./setupWorld');
 
     require('facadejs-Box2D-plugin');
 
@@ -17,19 +19,22 @@ define(function (require) {
 
     return function (level) {
 
-        var world = new Facade.Entity().Box2D('createWorld', { canvas: game.canvas, gravity: [ 0, 20 ] });
-
-        var entities = {
-            platforms: [],
-            player1: generateEntityFromObject({
-                options: { x: 100, y: 100, width: 50, height: 50 },
-                box2d_properties: {
-                    type: 'dynamic'
-                }
-            }, world)
-        };
-
         state.init(function () {
+
+            game.data.physWorld = new Facade.Entity().Box2D('createWorld', { canvas: game.canvas, gravity: [ 0, 20 ] });
+
+            game.data.entWorld = SetupWorld.new();
+
+            //world.createEntities(1, { withTemplates: ['player'], hasName: 'player' });
+            game.data.entities = {
+                platforms: [],
+                player1: generateEntityFromObject({
+                    options: { x: 100, y: 100, width: 50, height: 50 },
+                    box2d_properties: {
+                        type: 'dynamic'
+                    }
+                }, game.data.physWorld)
+            };
 
             fetch(level).then(function (response) {
                 return response.json();
@@ -41,9 +46,9 @@ define(function (require) {
 
                     if (items.length) {
 
-                        entities[type] = items.map(function (item) {
+                        game.data.entities[type] = items.map(function (item) {
 
-                            return generateEntityFromObject(item, world);
+                            return generateEntityFromObject(item, game.data.physWorld);
 
                         });
 
@@ -67,9 +72,9 @@ define(function (require) {
 
         state.update(function () {
 
-            camera.centerOnEntity(entities.player1);
+            camera.centerOnEntity(game.data.entities.player1);
 
-            world.Box2D('step');
+            game.data.physWorld.Box2D('step');
 
         });
 
@@ -78,23 +83,19 @@ define(function (require) {
             game.facade.clear();
 
             // game.facade.addToStage([
-            //     entities.platforms,
-            //     entities.player1
+            //     game.data.entities.platforms,
+            //     game.data.entities.player1
             // ], { x: '+=' + -camera.position.x, y: '+=' + -camera.position.y });
 
             // Debug translate for Box2D
 
             game.context.translate(-camera.position.x, -camera.position.y);
 
-            world.Box2D('drawDebug');
+            game.data.physWorld.Box2D('drawDebug');
 
         });
 
-        return {
-            world: world,
-            entities: entities,
-            state: state
-        };
+        return state;
 
     };
 
