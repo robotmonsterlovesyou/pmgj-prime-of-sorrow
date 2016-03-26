@@ -13,6 +13,10 @@ define(function (require) {
                 dir: 0
             },
 
+            visible: {
+                sprite: null
+            },
+
             powers: {
                 move: 5,
                 jump: 3,
@@ -37,6 +41,10 @@ define(function (require) {
                     y: 100,
                 },
                 powers: {}
+            },
+
+            visible: {
+
             },
 
             enemy: {

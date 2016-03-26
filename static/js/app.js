@@ -5,6 +5,6 @@ define(function (require) {
         level = require('./game/level')('../../data/level1.json');
 
     // game.start(intro);
-    game.start(level.state);
+    game.start(level);
 
 });
