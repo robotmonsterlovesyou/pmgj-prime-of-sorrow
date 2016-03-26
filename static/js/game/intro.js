@@ -11,8 +11,8 @@ define(function (require) {
     var controller = require('./controller')(state);
 
     var title = new Facade.Text('Hello World!', {
-        y: (game.stage.height() / 2) - 20,
-        width: game.stage.width(),
+        y: (game.facade.height() / 2) - 20,
+        width: game.facade.width(),
         fontSize: 20,
         textAlignment: 'center'
     });
@@ -41,9 +41,9 @@ define(function (require) {
 
     state.draw(function () {
 
-        game.stage.clear();
+        game.facade.clear();
 
-        game.stage.addToStage(title);
+        game.facade.addToStage(title);
 
     });
 

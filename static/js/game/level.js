@@ -10,8 +10,8 @@ define(function (require) {
     var controller = require('./controller')(state);
 
     var box = new Facade.Rect({
-        x: game.stage.width() / 2,
-        y: game.stage.height() / 2,
+        x: game.facade.width() / 2,
+        y: game.facade.height() / 2,
         width: 25,
         height: 25,
         anchor: 'center'
@@ -77,9 +77,9 @@ define(function (require) {
 
     state.draw(function () {
 
-        game.stage.clear();
+        game.facade.clear();
 
-        game.stage.addToStage(box);
+        game.facade.addToStage(box);
 
     });
 
