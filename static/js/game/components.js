@@ -7,17 +7,13 @@ define(function (require) {
         components: {
 
             physical: {
-                obj: null // box2d object
+                obj: null // facade object
             },
 
-            visible: {
-                sprite: null
-            },
+            visible: {},
 
-            powers: {
-                move: 5,
-                jump: 3,
-                weapon: 5
+            power: {
+                strength: 100
             },
 
             shot: {
