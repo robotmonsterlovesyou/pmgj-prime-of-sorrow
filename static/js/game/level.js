@@ -20,7 +20,13 @@ define(function (require) {
         var world = new Facade.Entity().Box2D('createWorld', { canvas: game.canvas, gravity: [ 0, 20 ] });
 
         var entities = {
-            platforms: []
+            platforms: [],
+            player1: generateEntityFromObject({
+                options: { x: 100, y: 100, width: 50, height: 50 },
+                box2d_properties: {
+                    type: 'dynamic'
+                }
+            }, world)
         };
 
         state.init(function () {
@@ -45,13 +51,25 @@ define(function (require) {
 
                 });
 
+                if (data.camera) {
+
+                    Object.keys(data.camera).forEach(function (key) {
+
+                        camera.settings[key] = data.camera[key];
+
+                    });
+
+                }
+
             });
 
         });
 
         state.update(function () {
 
+            camera.centerOnEntity(entities.player1);
 
+            world.Box2D('step');
 
         });
 
@@ -59,15 +77,24 @@ define(function (require) {
 
             game.facade.clear();
 
-            game.facade.addToStage([
-                entities.platforms
-            ]);
+            // game.facade.addToStage([
+            //     entities.platforms,
+            //     entities.player1
+            // ], { x: '+=' + -camera.position.x, y: '+=' + -camera.position.y });
+
+            // Debug translate for Box2D
+
+            game.context.translate(-camera.position.x, -camera.position.y);
 
             world.Box2D('drawDebug');
 
         });
 
-        return state;
+        return {
+            world: world,
+            entities: entities,
+            state: state
+        };
 
     };
 

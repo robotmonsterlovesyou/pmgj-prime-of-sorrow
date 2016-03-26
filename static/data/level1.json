@@ -1,4 +1,12 @@
 {
+    "camera": {
+        "width": 800,
+        "height": 400,
+        "minX": 0,
+        "maxX": 1600,
+        "minY": 0,
+        "maxY": 800
+    },
     "platforms": [
         {
             "label": "ground",
@@ -29,6 +37,17 @@
                 "y": 0,
                 "width": 20,
                 "height": 800
+            },
+            "box2d_properties": {
+            }
+        },
+        {
+            "label": "platform",
+            "options": {
+                "x": 300,
+                "y": 200,
+                "width": 200,
+                "height": 20
             },
             "box2d_properties": {
             }

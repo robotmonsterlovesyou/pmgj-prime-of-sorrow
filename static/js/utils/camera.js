@@ -19,6 +19,16 @@ define(function (require) {
 
             }
 
+            if (entity.getMetric('y') > position.y + (settings.height * 0.6)) {
+
+                position.y += Math.abs(entity.getMetric('y') - (position.y + (settings.height * 0.6)));
+
+            } else if (entity.getMetric('y') - entity.getMetric('height') / 2 < position.y + (settings.height * 0.3)) {
+
+                position.y -= Math.abs(entity.getMetric('y') - (entity.getMetric('height') / 2) - (position.y + (settings.height * 0.3)));
+
+            }
+
             if (position.x < settings.minX) {
 
                 position.x = settings.minX;
@@ -26,6 +36,16 @@ define(function (require) {
             } else if (position.x > settings.maxX - settings.width) {
 
                 position.x = settings.maxX - settings.width;
+
+            }
+
+            if (position.y < settings.minY) {
+
+                position.y = settings.minY;
+
+            } else if (position.y > settings.maxY - settings.height) {
+
+                position.y = settings.maxY - settings.height;
 
             }
 
