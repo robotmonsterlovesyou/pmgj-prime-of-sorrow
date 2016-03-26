@@ -28,25 +28,6 @@ define(function (require) {
 
             game.data.player1 = game.data.entWorld.createEntities(1, { withTemplates: ['player'], hasName: 'player' })[0];
 
-/*<<<<<<< Updated upstream
-            //world.createEntities(1, { withTemplates: ['player'], hasName: 'player' });
-            game.data.entities = {
-                platforms: [],
-                player1: generateEntityFromObject({
-                    options: {
-                        x: 100,
-                        y: 100,
-                        width: 100,
-                        height: 100,
-                        image: 'images/sprite.png',
-                        frames: [0, 1, 2, 3, 4, 5, 6, 7]
-                    },
-                    box2d_properties: {
-                        type: 'dynamic'
-                    }
-                }, game.data.physWorld)
-            };
-=======*/
             var player = game.data.player1.getProp('physical');
             player.obj = generateEntityFromObject({
                     options: {
@@ -59,7 +40,6 @@ define(function (require) {
                     },
                     box2d_properties: { type: 'dynamic' }
                 }, game.data.physWorld);
-//>>>>>>> Stashed changes
 
             player.obj.play();
 
