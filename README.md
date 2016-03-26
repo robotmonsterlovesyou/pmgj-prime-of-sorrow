@@ -27,3 +27,10 @@ $ make deploy
 - [Gamepad.js](https://github.com/neogeek/gamepad.js) - <https://github.com/neogeek/gamepad.js#gamepadjs>
 - [plastick.js](https://github.com/syntaxtsb/plastick.js) - <https://doxdox.org/syntaxtsb/plastick.js>
 - [Require.js](http://requirejs.org/) - <http://requirejs.org/docs/api.html>
+
+
+## Generating Sprites
+
+```bash
+$ montage -background transparent -geometry 100x100 -gravity South *.png sprite.png
+```

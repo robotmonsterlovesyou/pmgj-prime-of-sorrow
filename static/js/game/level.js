@@ -29,12 +29,21 @@ define(function (require) {
             game.data.entities = {
                 platforms: [],
                 player1: generateEntityFromObject({
-                    options: { x: 100, y: 100, width: 50, height: 50 },
+                    options: {
+                        x: 100,
+                        y: 100,
+                        width: 100,
+                        height: 100,
+                        image: 'images/sprite.png',
+                        frames: [0, 1, 2, 3, 4, 5, 6, 7]
+                    },
                     box2d_properties: {
                         type: 'dynamic'
                     }
                 }, game.data.physWorld)
             };
+
+            game.data.entities.player1.play();
 
             fetch(level).then(function (response) {
                 return response.json();
@@ -82,16 +91,16 @@ define(function (require) {
 
             game.facade.clear();
 
-            // game.facade.addToStage([
-            //     game.data.entities.platforms,
-            //     game.data.entities.player1
-            // ], { x: '+=' + -camera.position.x, y: '+=' + -camera.position.y });
+            game.facade.addToStage([
+                game.data.entities.platforms,
+                game.data.entities.player1
+            ], { x: '+=' + -camera.position.x, y: '+=' + -camera.position.y });
 
             // Debug translate for Box2D
 
-            game.context.translate(-camera.position.x, -camera.position.y);
+            // game.context.translate(-camera.position.x, -camera.position.y);
 
-            game.data.physWorld.Box2D('drawDebug');
+            // game.data.physWorld.Box2D('drawDebug');
 
         });
 
