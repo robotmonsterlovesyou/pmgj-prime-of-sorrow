@@ -120,6 +120,44 @@ define(function (require) {
 
                 }
 
+                if (e.type === 'press' && e.button === 'd_pad_left') {
+
+                    elem.setOptions({
+                        frames: [12, 14, 16, 14],
+                        speed: 120
+                    });
+
+                    elem.reset();
+
+                } else if (e.type === 'release' && e.button === 'd_pad_left') {
+
+                    elem.setOptions({
+                        frames: [7, 9],
+                        speed: 600
+                    });
+
+                    elem.reset();
+
+                } else if (e.type === 'press' && e.button === 'd_pad_right') {
+
+                    elem.setOptions({
+                        frames: [12, 14, 16, 14],
+                        speed: 120
+                    });
+
+                    elem.reset();
+
+                } else if (e.type === 'release' && e.button === 'd_pad_right') {
+
+                    elem.setOptions({
+                        frames: [7, 9],
+                        speed: 600
+                    });
+
+                    elem.reset();
+
+                }
+
             }
 
         },

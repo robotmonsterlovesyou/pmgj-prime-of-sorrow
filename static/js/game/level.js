@@ -38,7 +38,8 @@ define(function (require) {
                         width: 100,
                         height: 100,
                         image: 'images/sprite.png',
-                        frames: [0, 1, 2, 3, 4, 5, 6, 7]
+                        frames: [7, 9],
+                        speed: 600
                     },
                     box2d_properties: { type: 'dynamic' }
                 }, game.data.physWorld);
