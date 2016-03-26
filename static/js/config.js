@@ -1,7 +1,7 @@
 require.config({
     urlArgs: 'bust=' + (new Date()).getTime(),
     paths: {
-        'box2dweb': '../bower_components/facadejs-Box2D-plugin/vendor/box2dweb/Box2dWeb-2.1.a.3',
+        'box2dweb': '../bower_components/facadejs-Box2D-plugin/vendor/box2dweb/Box2d.min',
         'facade': '../bower_components/facade.js/facade',
         'facadejs-Box2D-plugin': '../bower_components/facadejs-Box2D-plugin/facadejs-Box2D',
         'gamepad': '../bower_components/gamepad.js/gamepad.min',
