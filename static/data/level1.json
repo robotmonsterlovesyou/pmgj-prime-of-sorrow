@@ -4,8 +4,8 @@
             "label": "ground",
             "options": {
                 "x": 0,
-                "y": 380,
-                "width": 800,
+                "y": 780,
+                "width": 1600,
                 "height": 20
             },
             "box2d_properties": {
@@ -17,7 +17,7 @@
                 "x": 0,
                 "y": 0,
                 "width": 20,
-                "height": 400
+                "height": 800
             },
             "box2d_properties": {
             }
@@ -25,10 +25,10 @@
         {
             "label": "wall-right",
             "options": {
-                "x": 780,
+                "x": 1580,
                 "y": 0,
                 "width": 20,
-                "height": 400
+                "height": 800
             },
             "box2d_properties": {
             }
