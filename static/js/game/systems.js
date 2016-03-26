@@ -59,7 +59,7 @@ define(function (require) {
                     y: (t - dt) * direction.y + y1,
                     l: nt - ndt,
                     result: true
-                }
+                };
                 // 2. segment starts or ends in circle
                 else {
                     var dc1 = { x: xc - x1, y: yc - y1 },
@@ -87,7 +87,7 @@ define(function (require) {
                     else collision.result = false;
                 }
             } else collision.result = false;
-        };
+        }
 
         return collision;
     }
