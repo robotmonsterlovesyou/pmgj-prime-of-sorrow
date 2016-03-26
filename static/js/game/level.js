@@ -79,6 +79,30 @@ define(function (require) {
 
             });
 
+            // UI bar
+            game.data.ui = {};
+            var ui = game.data.ui;
+            ui.energyBarC = game.data.entWorld.createEntities(1, { withComponents: ['ui', 'background'], hasName: 'energy-bar-container' })[0];
+            ui.energyBarC.getProp('ui').obj = Facade.Image('images/energy-bar2.png', {
+                x: 20,
+                y: 20,
+                tileX: 100,
+                anchor: 'top/left'
+            });
+            ui.energyUnitPx = 2;//ui.energyBarC.getProp('ui').obj.getMetric('width');
+            //console.log(ui.energyBarC.getProp('ui').obj);
+
+            ui.energyBar = game.data.entWorld.createEntities(1, { withComponents: ['ui', 'foreground'], hasName: 'energy-bar' })[0];
+            ui.energyBar.getProp('ui').obj = Facade.Rect({
+                x: 20,
+                y: 20 + ui.energyUnitPx,
+                width: 100 * ui.energyUnitPx,
+                height: 12,
+                fillStyle: 'hsla(0, 100%, 50%, 0.7)',
+                anchor: 'top/left'
+            });
+
+
         });
 
         state.cleanup(function () {
