@@ -15,56 +15,60 @@ define(function (require) {
 
     var generateEntityFromObject = require('../utils/box2d').generateEntityFromObject;
 
-    var world = new Facade.Entity().Box2D('createWorld', { canvas: game.canvas, gravity: [ 0, 20 ] });
+    return function (level) {
 
-    var entities = {
-        platforms: []
-    };
+        var world = new Facade.Entity().Box2D('createWorld', { canvas: game.canvas, gravity: [ 0, 20 ] });
 
-    state.init(function () {
+        var entities = {
+            platforms: []
+        };
 
-        fetch('../../data/level1.json').then(function (response) {
-            return response.json();
-        }).then(function (data) {
+        state.init(function () {
 
-            Object.keys(data).forEach(function (type) {
+            fetch(level).then(function (response) {
+                return response.json();
+            }).then(function (data) {
 
-                var items = data[type];
+                Object.keys(data).forEach(function (type) {
 
-                if (items.length) {
+                    var items = data[type];
 
-                    entities[type] = items.map(function (item) {
+                    if (items.length) {
 
-                        return generateEntityFromObject(item, world);
+                        entities[type] = items.map(function (item) {
 
-                    });
+                            return generateEntityFromObject(item, world);
 
-                }
+                        });
+
+                    }
+
+                });
 
             });
 
         });
 
-    });
-
-    state.update(function () {
+        state.update(function () {
 
 
 
-    });
+        });
 
-    state.draw(function () {
+        state.draw(function () {
 
-        game.facade.clear();
+            game.facade.clear();
 
-        game.facade.addToStage([
-            entities.platforms
-        ]);
+            game.facade.addToStage([
+                entities.platforms
+            ]);
 
-        world.Box2D('drawDebug');
+            world.Box2D('drawDebug');
 
-    });
+        });
 
-    return state;
+        return state;
+
+    };
 
 });
