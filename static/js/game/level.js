@@ -7,7 +7,7 @@ define(function (require) {
 
     var state = new Plastick.State('level');
 
-    var controller = require('./controller')(state);
+    var controller = require('../utils/controller')(state);
 
     var box = new Facade.Rect({
         x: game.facade.width() / 2,

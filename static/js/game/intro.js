@@ -8,7 +8,7 @@ define(function (require) {
 
     var state = new Plastick.State('intro');
 
-    var controller = require('./controller')(state);
+    var controller = require('../utils/controller')(state);
 
     var title = new Facade.Text('Prime of Sorrow', {
         y: (game.facade.height() / 2) - 40,
