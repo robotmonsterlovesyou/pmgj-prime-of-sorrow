@@ -112,15 +112,15 @@ define(function (require) {
 
                 if (e.type === 'press' && e.button === 'button_1') {
 
-                    elem.Box2D('setVelocity', null, -15);
+                    elem.Box2D('setVelocity', null, player.getProp('power').strength ? -30 : -15);
 
                 } else if (e.type === 'hold' && e.button === 'd_pad_left') {
 
-                    elem.Box2D('setVelocity', -10, null);
+                    elem.Box2D('setVelocity', player.getProp('power').strength ? -20 : -10, null);
 
                 } else if (e.type === 'hold' && e.button === 'd_pad_right') {
 
-                    elem.Box2D('setVelocity', 10, null);
+                    elem.Box2D('setVelocity', player.getProp('power').strength ? 20 : 10, null);
 
                 }
 
