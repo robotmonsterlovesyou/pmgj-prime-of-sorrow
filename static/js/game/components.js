@@ -21,15 +21,16 @@ define(function (require) {
 
             power: {
                 jump: 30,
+                dampenJump: 0.67,
                 run: 20,
-                dampenFactor: 0.5,
+                dampenRun: 0.5,
                 strength: 100,
                 consumeTick: false,
                 consumeRate: 0.02,
                 consumeVel: 0,
                 regenStart: 0,      // timestamp
                 regenRate: 1,
-                regenDelay: 100,
+                regenDelay: 100
             },
 
             shot: {
