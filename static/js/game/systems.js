@@ -92,10 +92,6 @@ define(function (require) {
         return collision;
     }
 
-    function updateEnergy(player) {
-
-
-    }
     // Systems --------------------------------------------------
 
     return {
@@ -104,7 +100,12 @@ define(function (require) {
         playerInput: function (world, controller, player, tick) {
 
             var e,
-                elem = player.getProp('physical').obj;
+                elem = player.getProp('physical').obj,
+                power = player.getProp('power');
+
+            power.consumeTick = false;
+            power.consumeVel = 0;
+            if (power.regenStart === null) power.regenStart = tick;
 
             while (controller.queue.length) {
 
@@ -112,26 +113,31 @@ define(function (require) {
 
                 if (e.type === 'press' && e.button === 'button_1') {
 
+<<<<<<< Updated upstream
                     elem.Box2D('setVelocity', null, player.getProp('power').strength ? -30 : -20);
+=======
+                    elem.Box2D('setVelocity', null, player.getProp('power').strength ? -power.jump : -power.jump / power.dampenFactor);
+                    power.consumeTick = true;
+                    power.consumeVel += Math.abs(power.jump * power.jump);
+                    power.regenStart = null;
+>>>>>>> Stashed changes
 
                 } else if (e.type === 'hold' && e.button === 'd_pad_left') {
 
-                    elem.Box2D('setVelocity', player.getProp('power').strength ? -20 : -10, null);
+                    elem.Box2D('setVelocity', player.getProp('power').strength ? -power.run : -power.run / power.dampenFactor, null);
+                    power.consumeTick = true;
+                    power.consumeVel += Math.abs(power.run);
+                    power.regenStart = null;
 
                 } else if (e.type === 'hold' && e.button === 'd_pad_right') {
 
-                    elem.Box2D('setVelocity', player.getProp('power').strength ? 20 : 10, null);
+                    elem.Box2D('setVelocity', player.getProp('power').strength ? power.run : power.run / power.dampenFactor, null);
+                    power.consumeTick = true;
+                    power.consumeVel = Math.abs(power.run);
+                    power.regenStart = null;
 
                 }
 
-                // consume energy
-                if (e.type === 'hold' && player.getProp('power').consumeStart === null) {
-                    player.getProp('power').consumeStart = tick;
-                    player.getProp('power').regenStart = null;
-                } else if (e.type !== 'hold' && player.getProp('power').regenStart === null) {
-                    player.getProp('power').consumeStart = null;
-                    player.getProp('power').regenStart = tick;
-                }
             }
 
         },
@@ -142,8 +148,8 @@ define(function (require) {
                 ui = game.data.ui;
 
             // check for consumption
-            if (power.consumeStart !== null && power.strength > 0) {
-                power.strength -= power.consumeRate;
+            if (power.consumeTick && power.strength > 0) {
+                power.strength -= power.consumeRate * power.consumeVel;
                 if (power.strength < 0) power.strength = 0;
                 ui.energyBar.getProp('ui').obj.setOptions({
                     width: power.strength * ui.energyUnitPx
