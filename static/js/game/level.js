@@ -59,7 +59,7 @@ define(function (require) {
 
                         items.forEach( function (item) {
 
-                            var i = game.data.entWorld.createEntities(1, { withTemplates: ['platform'], hasName: 'platform' })[0];
+                            var i = game.data.entWorld.createEntities(1, { withTemplates: [type], hasName: type })[0];
                             i.getProp('physical').obj = generateEntityFromObject(item, game.data.physWorld);
 
                         });
