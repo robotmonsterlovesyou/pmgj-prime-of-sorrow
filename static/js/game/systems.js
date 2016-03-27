@@ -112,7 +112,7 @@ define(function (require) {
 
                 if (e.type === 'press' && e.button === 'button_1') {
 
-                    elem.Box2D('setVelocity', null, player.getProp('power').strength ? -30 : -15);
+                    elem.Box2D('setVelocity', null, player.getProp('power').strength ? -30 : -20);
 
                 } else if (e.type === 'hold' && e.button === 'd_pad_left') {
 
