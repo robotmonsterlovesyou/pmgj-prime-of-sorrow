@@ -32,5 +32,6 @@ $ make deploy
 ## Generating Sprites
 
 ```bash
-$ montage -background transparent -geometry 100x100 -gravity South *.png sprite.png
+$ montage -background transparent -geometry 100x100 -gravity South *.png sprite-face-right.png
+$ montage -background transparent -geometry 100x100 -gravity South *.png -flop sprite-face-left.png
 ```
