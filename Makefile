@@ -10,10 +10,11 @@ deploy:
 	rm -rf dist/bower_components/
 	rm -rf dist/js-build/
 	rm -rf dist/js/
-	rm dist/build.config.js
 
 	mkdir dist/js
 	mv dist/js-build/config.js dist/js/build.min.js
+
+	rm dist/build.config.js
 
 	rm dist/index.html
 	mv dist/index-dist.html dist/index.html
