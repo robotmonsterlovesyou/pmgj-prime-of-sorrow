@@ -122,6 +122,8 @@ define(function (require) {
 
                 if (e.type === 'press' && e.button === 'd_pad_left') {
 
+                    elem.load('images/sprite-face-left.png');
+
                     elem.setOptions({
                         frames: [12, 14, 16, 14],
                         speed: 120
@@ -130,6 +132,8 @@ define(function (require) {
                     elem.reset();
 
                 } else if (e.type === 'release' && e.button === 'd_pad_left') {
+
+                    elem.load('images/sprite-face-left.png');
 
                     elem.setOptions({
                         frames: [7, 9],
@@ -140,6 +144,8 @@ define(function (require) {
 
                 } else if (e.type === 'press' && e.button === 'd_pad_right') {
 
+                    elem.load('images/sprite-face-right.png');
+
                     elem.setOptions({
                         frames: [12, 14, 16, 14],
                         speed: 120
@@ -148,6 +154,8 @@ define(function (require) {
                     elem.reset();
 
                 } else if (e.type === 'release' && e.button === 'd_pad_right') {
+
+                    elem.load('images/sprite-face-right.png');
 
                     elem.setOptions({
                         frames: [7, 9],

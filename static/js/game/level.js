@@ -37,7 +37,7 @@ define(function (require) {
                         y: 100,
                         width: 100,
                         height: 100,
-                        image: 'images/sprite.png',
+                        image: 'images/sprite-face-right.png',
                         frames: [7, 9],
                         speed: 600,
                         scale: 0.7
