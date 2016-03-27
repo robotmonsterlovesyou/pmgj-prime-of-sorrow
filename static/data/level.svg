@@ -13,18 +13,18 @@
             <rect id="platform" fill="#4A4A4A" x="7930" y="0" width="70" height="1600"></rect>
             <rect id="platform" fill="#4A4A4A" x="70" y="70" width="1750" height="450"></rect>
             <rect id="platform" fill="#4A4A4A" x="560" y="980" width="1260" height="350"></rect>
-            <rect id="platform" fill="#4A4A4A" x="70" y="710" width="1470" height="70"></rect>
+            <rect id="platform" fill="#4A4A4A" x="70" y="700" width="1470" height="70"></rect>
             <rect id="platform" fill="#4A4A4A" x="70" y="1260" width="140" height="70"></rect>
-            <rect id="platform" fill="#4A4A4A" x="420" y="1119" width="140" height="70"></rect>
+            <rect id="platform" fill="#4A4A4A" x="420" y="1120" width="140" height="70"></rect>
             <rect id="platform" fill="#4A4A4A" x="70" y="980" width="140" height="70"></rect>
             <rect id="platform" fill="#4A4A4A" x="1820" y="70" width="560" height="1260"></rect>
             <rect id="platform" fill="#4A4A4A" x="2520" y="70" width="350" height="1050"></rect>
             <rect id="platform-friction" fill="#50E3C2" x="0" y="1529" width="8000" height="1"></rect>
-            <rect id="platform-friction" fill="#50E3C2" x="70" y="1259" width="140" height="1"></rect>
-            <rect id="platform-friction" fill="#50E3C2" x="420" y="1118" width="140" height="1"></rect>
-            <rect id="platform-friction" fill="#50E3C2" x="70" y="979" width="140" height="1"></rect>
-            <rect id="platform-friction" fill="#50E3C2" x="560" y="979" width="1260" height="1"></rect>
-            <rect id="platform-friction" fill="#50E3C2" x="70" y="709" width="1470" height="1"></rect>
+            <rect id="platform-friction" fill="#50E3C2" x="70" y="1259" width="139" height="1"></rect>
+            <rect id="platform-friction" fill="#50E3C2" x="421" y="1119" width="139" height="1"></rect>
+            <rect id="platform-friction" fill="#50E3C2" x="70" y="979" width="139" height="1"></rect>
+            <rect id="platform-friction" fill="#50E3C2" x="561" y="979" width="1259" height="1"></rect>
+            <rect id="platform-friction" fill="#50E3C2" x="70" y="699" width="1469" height="1"></rect>
             <rect id="player" fill="#9012FE" x="2415" y="100" width="70" height="70"></rect>
             <rect id="player" fill="#9012FE" x="508" y="1405" width="70" height="70"></rect>
         </g>
