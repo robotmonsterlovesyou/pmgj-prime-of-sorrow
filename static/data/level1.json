@@ -17,8 +17,6 @@
                 "height": 1600,
                 "fillStyle": "#989898",
                 "pattern": "images/background.png"
-            },
-            "box2d_properties": {
             }
         }
     ],
