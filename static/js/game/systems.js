@@ -95,7 +95,7 @@ define(function (require) {
     function updateEnergy(player) {
 
 
-    };
+    }
     // Systems --------------------------------------------------
 
     return {
