@@ -1,0 +1,23 @@
+{
+    "camera": {
+        "width": 800,
+        "height": 400,
+        "minX": 0,
+        "maxX": 8000,
+        "minY": 0,
+        "maxY": 1600
+    },
+    "background": [
+        {
+            "label": "",
+            "options": {
+                "x": 0,
+                "y": 0,
+                "width": 8000,
+                "height": 1600,
+                "fillStyle": "#989898",
+                "pattern": "images/background.png"
+            }
+        }
+    ]
+}
