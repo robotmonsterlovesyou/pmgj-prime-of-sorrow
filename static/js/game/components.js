@@ -11,7 +11,11 @@ define(function (require) {
             },
 
             visible: {
-                hue: 0
+                hue: 0,
+                direction: {
+                    horizontal: 'right',
+                    vertical: ''
+                }
             },
 
             power: {
