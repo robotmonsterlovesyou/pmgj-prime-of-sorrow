@@ -62,6 +62,11 @@ define(function (require) {
                 visible: {},
                 foreground: {}
             },
+            'platform-friction': {
+                physical: {},
+                visible: {},
+                foreground: {}
+            },
             enemy: {
                 physical: {},
                 visible: {}

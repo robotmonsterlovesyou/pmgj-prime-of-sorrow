@@ -92,7 +92,7 @@ define(function (require) {
 
             }).then(function (dom) {
 
-                [].slice.call(dom.querySelectorAll('#level rect[fill="#4A4A4A"]')).forEach( function (item) {
+                [].slice.call(dom.querySelectorAll('#platform')).forEach( function (item) {
 
                     var i = game.data.entWorld.createEntities(1, { withTemplates: ['platform'], hasName: 'platform' })[0];
                     i.getProp('physical').obj = generateEntityFromObject({
@@ -105,7 +105,28 @@ define(function (require) {
                             fillStyle: '#ABC0C1',
                             pattern: 'images/box.png'
                         },
-                        box2d_properties: {}
+                        box2d_properties: {
+                            friction: 0
+                        }
+                    }, game.data.physWorld);
+
+                });
+
+                [].slice.call(dom.querySelectorAll('#platform-friction')).forEach( function (item) {
+
+                    var i = game.data.entWorld.createEntities(1, { withTemplates: ['platform-friction'], hasName: 'platform-friction' })[0];
+                    i.getProp('physical').obj = generateEntityFromObject({
+                        label: '',
+                        options: {
+                            x: item.getAttribute('x'),
+                            y: item.getAttribute('y'),
+                            width: item.getAttribute('width'),
+                            height: item.getAttribute('height'),
+                            fillStyle: '#50E3C2'
+                        },
+                        box2d_properties: {
+                            friction: 1.0
+                        }
                     }, game.data.physWorld);
 
                 });
