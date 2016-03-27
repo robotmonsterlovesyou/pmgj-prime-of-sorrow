@@ -113,14 +113,10 @@ define(function (require) {
 
                 if (e.type === 'press' && e.button === 'button_1') {
 
-<<<<<<< Updated upstream
-                    elem.Box2D('setVelocity', null, player.getProp('power').strength ? -30 : -20);
-=======
                     elem.Box2D('setVelocity', null, player.getProp('power').strength ? -power.jump : -power.jump / power.dampenFactor);
                     power.consumeTick = true;
                     power.consumeVel += Math.abs(power.jump * power.jump);
                     power.regenStart = null;
->>>>>>> Stashed changes
 
                 } else if (e.type === 'hold' && e.button === 'd_pad_left') {
 
