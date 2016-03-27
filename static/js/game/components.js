@@ -39,6 +39,11 @@ define(function (require) {
 
         templates: {
 
+            background: {
+                physical: {},
+                visible: {}
+            },
+
             player: {
                 physical: {},
                 visible: {},
