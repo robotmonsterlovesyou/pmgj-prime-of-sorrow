@@ -124,52 +124,6 @@ define(function (require) {
 
                 }
 
-                if (e.type === 'press' && e.button === 'd_pad_left') {
-
-                    elem.load('images/sprite-face-left.png');
-
-                    elem.setOptions({
-                        frames: [12, 14, 16, 14],
-                        speed: 120
-                    });
-
-                    elem.reset();
-
-                } else if (e.type === 'release' && e.button === 'd_pad_left') {
-
-                    elem.load('images/sprite-face-left.png');
-
-                    elem.setOptions({
-                        frames: [7, 9],
-                        speed: 600
-                    });
-
-                    elem.reset();
-
-                } else if (e.type === 'press' && e.button === 'd_pad_right') {
-
-                    elem.load('images/sprite-face-right.png');
-
-                    elem.setOptions({
-                        frames: [12, 14, 16, 14],
-                        speed: 120
-                    });
-
-                    elem.reset();
-
-                } else if (e.type === 'release' && e.button === 'd_pad_right') {
-
-                    elem.load('images/sprite-face-right.png');
-
-                    elem.setOptions({
-                        frames: [7, 9],
-                        speed: 600
-                    });
-
-                    elem.reset();
-
-                }
-
                 // consume energy
                 if (e.type === 'hold' && player.getProp('power').consumeStart === null) {
                     player.getProp('power').consumeStart = tick;
@@ -209,8 +163,73 @@ define(function (require) {
 
         updatePhysics: function (world, triggers, camera, data) {
 
-            camera.centerOnEntity(data.player1.getProp('physical').obj);
+            var elem = data.player1.getProp('physical').obj,
+                direction = data.player1.getProp('visible').direction;
+
+            if (direction.horizontal === 'right' && elem.Box2D('getVelocity').x < 0) {
+
+                direction.horizontal = 'left';
+
+                elem.load('images/sprite-face-left.png');
+
+            } else if (direction.horizontal === 'left' && elem.Box2D('getVelocity').x > 0) {
+
+                direction.horizontal = 'right';
+
+                elem.load('images/sprite-face-right.png');
+
+            }
+
+            if (direction.walking === false && (elem.Box2D('getVelocity').x < -1 || elem.Box2D('getVelocity').x > 1)) {
+
+                direction.walking = true;
+
+                elem.setOptions({
+                    frames: [12, 14, 16, 14],
+                    speed: 120
+                });
+
+                elem.reset();
+
+            } else if (direction.walking === true && elem.Box2D('getVelocity').x === 0) {
+
+                direction.walking = false;
+
+                elem.setOptions({
+                    frames: [7, 9],
+                    speed: 600
+                });
+
+                elem.reset();
+
+            }
+
+            if (direction.jumping === false && (elem.Box2D('getVelocity').y < -1 || elem.Box2D('getVelocity').y > 1)) {
+
+                direction.jumping = true;
+
+                elem.setOptions({
+                    frames: [5]
+                });
+
+                elem.reset();
+
+            } else if (direction.jumping === true && elem.Box2D('getVelocity').y === 0) {
+
+                direction.jumping = false;
+
+                elem.setOptions({
+                    frames: [7, 9],
+                    speed: 600
+                });
+
+                elem.reset();
+
+            }
+
+            camera.centerOnEntity(elem);
             data.physWorld.Box2D('step');
+
         },
 
         fireWeapons: function (world, triggers, tick) {
