@@ -92,12 +92,16 @@ define(function (require) {
         return collision;
     }
 
+    function updateEnergy(player) {
+
+
+    };
     // Systems --------------------------------------------------
 
     return {
 
         // pass Controller object
-        playerInput: function (world, controller, player) {
+        playerInput: function (world, controller, player, tick) {
 
             var e,
                 elem = player.getProp('physical').obj;
@@ -166,8 +170,41 @@ define(function (require) {
 
                 }
 
+                // consume energy
+                if (e.type === 'hold' && player.getProp('power').consumeStart === null) {
+                    player.getProp('power').consumeStart = tick;
+                    player.getProp('power').regenStart = null;
+                } else if (e.type !== 'hold' && player.getProp('power').regenStart === null) {
+                    player.getProp('power').consumeStart = null;
+                    player.getProp('power').regenStart = tick;
+                }
             }
 
+        },
+
+        updateEnergy: function (world, player, game) {
+
+            var power = player.getProp('power'),
+                ui = game.data.ui;
+
+            // check for consumption
+            if (power.consumeStart !== null && power.strength > 0) {
+                power.strength -= power.consumeRate;
+                if (power.strength < 0) power.strength = 0;
+                ui.energyBar.getProp('ui').obj.setOptions({
+                    width: power.strength * ui.energyUnitPx
+                });
+            }
+
+            // check for regeneration
+            if (power.regenStart !== null && power.strength < 100 &&
+                (power.strength > 0 || game.currentTick - power.regenStart > power.regenDelay)) {
+                power.strength += power.regenRate;
+                if (power.strength > 100) power.strength = 100;
+                ui.energyBar.getProp('ui').obj.setOptions({
+                    width: power.strength * ui.energyUnitPx
+                });
+            }
         },
 
         updatePhysics: function (world, triggers, camera, data) {
@@ -195,12 +232,19 @@ define(function (require) {
 
         drawViewport: function (world, facade, camera) {
 
+            // background entities
+            world.eachEntity(function (e) {
+
+                var sprite = e.getProp('physical').obj;
+                facade.addToStage(sprite, { x: '+=' + -camera.position.x, y: '+=' + -camera.position.y });
+            }, { filterComponents: ['physical', 'visible', 'background'] });
+
             // all entities
             world.eachEntity(function (e) {
 
                 var sprite = e.getProp('physical').obj;
                 facade.addToStage(sprite, { x: '+=' + -camera.position.x, y: '+=' + -camera.position.y });
-            }, { filterComponents: ['physical', 'visible'] });
+            }, { filterComponents: ['physical', 'visible', 'foreground'] });
 
             // UI - background
             world.eachEntity(function (e) {

@@ -97,7 +97,7 @@ define(function (require) {
             ui.energyBar.getProp('ui').obj = Facade.Rect({
                 x: 20,
                 y: 20 + ui.energyUnitPx,
-                width: 100 * ui.energyUnitPx,
+                width: game.data.player1.getProp('power').strength * ui.energyUnitPx,
                 height: 12,
                 fillStyle: 'hsla(0, 100%, 50%, 0.7)',
                 anchor: 'top/left'
@@ -117,7 +117,8 @@ define(function (require) {
                 triggers = game.data.triggers;
             //triggers.init();
 
-            entWorld.updateSystem('playerInput', controller, game.data.player1);
+            entWorld.updateSystem('playerInput', controller, game.data.player1, game.currentTick);
+            entWorld.updateSystem('updateEnergy', game.data.player1, game);
             entWorld.updateSystem('fireWeapons', triggers, game.currentTick);
             entWorld.updateSystem('updatePhysics', triggers, camera, game.data);
 

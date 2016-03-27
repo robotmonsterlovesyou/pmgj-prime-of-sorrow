@@ -15,7 +15,12 @@ define(function (require) {
             },
 
             power: {
-                strength: 100
+                strength: 100,
+                consumeStart: null, // timestamp
+                consumeRate: 1,
+                regenStart: 0,      // timestamp
+                regenRate: 1,
+                regenDelay: 100,
             },
 
             shot: {
@@ -41,18 +46,21 @@ define(function (require) {
 
             background: {
                 physical: {},
-                visible: {}
+                visible: {},
+                background: {}
             },
 
             player: {
                 physical: {},
                 visible: {},
-                power: {}
+                power: {},
+                foreground: {}
             },
 
             platform: {
                 physical: {},
-                visible: {}
+                visible: {},
+                foreground: {}
             },
             enemy: {
                 physical: {},
