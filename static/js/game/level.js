@@ -80,6 +80,38 @@ define(function (require) {
 
             });
 
+            fetch('./data/level.svg').then(function (response) {
+
+                return response.text();
+
+            }).then(function (svg) {
+
+                var dom = document.createElement('div');
+                dom.innerHTML = svg;
+                return dom.querySelector('svg');
+
+            }).then(function (dom) {
+
+                [].slice.call(dom.querySelectorAll('#level rect[fill="#4A4A4A"]')).forEach( function (item) {
+
+                    var i = game.data.entWorld.createEntities(1, { withTemplates: ['platform'], hasName: 'platform' })[0];
+                    i.getProp('physical').obj = generateEntityFromObject({
+                        label: '',
+                        options: {
+                            x: item.getAttribute('x'),
+                            y: item.getAttribute('y'),
+                            width: item.getAttribute('width'),
+                            height: item.getAttribute('height'),
+                            fillStyle: '#ABC0C1',
+                            pattern: 'images/box.png'
+                        },
+                        box2d_properties: {}
+                    }, game.data.physWorld);
+
+                });
+
+            });
+
             // UI bar
             game.data.ui = {};
             var ui = game.data.ui;
