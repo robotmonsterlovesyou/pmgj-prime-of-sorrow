@@ -113,21 +113,21 @@ define(function (require) {
 
                 if (e.type === 'press' && e.button === 'button_1') {
 
-                    elem.Box2D('setVelocity', null, player.getProp('power').strength ? -power.jump : -power.jump / power.dampenFactor);
+                    elem.Box2D('setVelocity', null, player.getProp('power').strength ? -power.jump : -power.jump * power.dampenFactor);
                     power.consumeTick = true;
                     power.consumeVel += Math.abs(power.jump * power.jump);
                     power.regenStart = null;
 
                 } else if (e.type === 'hold' && e.button === 'd_pad_left') {
 
-                    elem.Box2D('setVelocity', player.getProp('power').strength ? -power.run : -power.run / power.dampenFactor, null);
+                    elem.Box2D('setVelocity', player.getProp('power').strength ? -power.run : -power.run * power.dampenFactor, null);
                     power.consumeTick = true;
                     power.consumeVel += Math.abs(power.run);
                     power.regenStart = null;
 
                 } else if (e.type === 'hold' && e.button === 'd_pad_right') {
 
-                    elem.Box2D('setVelocity', player.getProp('power').strength ? power.run : power.run / power.dampenFactor, null);
+                    elem.Box2D('setVelocity', player.getProp('power').strength ? power.run : power.run * power.dampenFactor, null);
                     power.consumeTick = true;
                     power.consumeVel = Math.abs(power.run);
                     power.regenStart = null;
