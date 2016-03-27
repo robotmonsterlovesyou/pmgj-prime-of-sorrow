@@ -14,7 +14,8 @@ define(function (require) {
                 hue: 0,
                 direction: {
                     horizontal: 'right',
-                    vertical: ''
+                    jumping: false,
+                    walking: false
                 }
             },
 
